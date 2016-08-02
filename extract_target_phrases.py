@@ -164,11 +164,12 @@ def run_liang_model(l_s, languages, dirname):
 		if os.path.isdir(out): continue
 		else: call(['./crossTrain', conf, out])
 
-def main( languages = ['ko', 'tr', 'en', 'sv', 'id', 'ro', 'vi', 'pl', 'ca', 'lt', 'sr', 'et', 
+def run_experiment( languages = ['ko', 'tr', 'en', 'sv', 'id', 'ro', 'vi', 'pl', 'ca', 'lt', 'sr', 'et', 
 					  'hu', 'hi', 'el', 'ka', 'ml', 'fa', 'ar', 'he', 'ja'],
-		  source = 'nl',
-		  dirname = '/Users/barendbeekhuizen/opus_sample_20'
-		  id_constraint = None):
+		            source = 'nl',
+		            dirname = '/Users/barendbeekhuizen/opus_sample_20'
+		            id_constraint = None):
+	# this is the outer shell -- run from ipython or write a main function
 	rewrite_conf_file(source, languages, dirname)
 	for l_t in languages: sample_train(source, l_t, dirname, 200000)
 	run_liang_model(source, languages, dirname)
